@@ -35,17 +35,17 @@ const Edit = ({
         gambar_produk: product.image || "",
     });
 
-    const handlePreviewImage = (e: ChangeEvent<HTMLInputElement>) => {
-        const target = e.target as HTMLInputElement;
+    // const handlePreviewImage = (e: ChangeEvent<HTMLInputElement>) => {
+    //     const target = e.target as HTMLInputElement;
 
-        if (target.files && target.files[0]) {
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                setPreviewImage(event && (event.target?.result as string));
-            };
-            reader.readAsDataURL(target.files[0]);
-        }
-    };
+    //     if (target.files && target.files[0]) {
+    //         const reader = new FileReader();
+    //         reader.onload = (event) => {
+    //             setPreviewImage(event && (event.target?.result as string));
+    //         };
+    //         reader.readAsDataURL(target.files[0]);
+    //     }
+    // };
 
     useEffect(() => {
         const imageUrl = import.meta.env.VITE_APP_URL + "/" + product.image;
@@ -97,7 +97,7 @@ const Edit = ({
                     </h2>
                     <Link
                         href={route("product.index")}
-                        className="bg-orange-600 text-gray-100 p-1 rounded-md hover:bg-orange-800"
+                        className="bg-orange-600 text-gray-100 py-2 px-4 rounded-md hover:bg-orange-800"
                     >
                         Kembali
                     </Link>
@@ -166,15 +166,6 @@ const Edit = ({
                                 />
                             </div>
                             <div className="mb-3">
-                                {product.image ? (
-                                    <div className="flex justify-start items-center py-4">
-                                        <img
-                                            src={previewImage}
-                                            alt="Preview Product Asr Furniture"
-                                            className="rounded-lg h-32 w-32 "
-                                        />
-                                    </div>
-                                ) : null}
                                 <Inputfile
                                     label="Gambar Produk"
                                     labelInput="Upload Gambar"
@@ -183,8 +174,8 @@ const Edit = ({
                                             "gambar_produk",
                                             e.target.files[0]
                                         );
-                                        handlePreviewImage(e);
                                     }}
+                                    imageReady={product.image}
                                 />
                             </div>
                             <div className="mb-3">
@@ -193,7 +184,7 @@ const Edit = ({
                                 </label>
                                 <textarea
                                     name="deskripsi_produk"
-                                    className="bg-gray-800 text-gray-200 w-full h-24 rounded-md"
+                                    className="bg-gray-700 border-none text-gray-200 w-full h-24 rounded-md"
                                     value={data.deskripsi_produk}
                                     onChange={(e) =>
                                         setData(

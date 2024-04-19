@@ -58,7 +58,7 @@ export default function Index({
                     </h2>
                     <Link
                         href={route("product.create")}
-                        className="bg-indigo-600 text-gray-100 p-1 rounded-md hover:bg-indigo-800"
+                        className="bg-indigo-600 text-gray-100 py-2 px-4 rounded-md hover:bg-indigo-800"
                     >
                         Tambah Produk
                     </Link>
